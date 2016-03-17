@@ -11,8 +11,13 @@
     <title>Hello</title>
 </head>
 <body>
-<%
-    out.println("Hello World");
-%>
+<p> Hello World</p>
+<form action="home" method="get">
+    First name:<br>
+    <input type="text" name="firstname"><br>
+    Password:<br>
+    <input type="password" name="password">
+    <input type="submit" value="Submit">
+</form>
 </body>
 </html>

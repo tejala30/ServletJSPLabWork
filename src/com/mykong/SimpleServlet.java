@@ -12,8 +12,15 @@ import java.time.LocalDateTime;
 /**
  * Created by tethippe on 3/16/2016.
  */
-@WebServlet("/home")
+@WebServlet(urlPatterns = {"/home"} , name="SimpleServlet")
 public class SimpleServlet extends HttpServlet {
+    String appName = "Default";
+
+    @Override
+    public void init() throws ServletException {
+        appName = getInitParameter("ProductName");
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -24,5 +31,21 @@ public class SimpleServlet extends HttpServlet {
         out.println("<h1>hi!</h1>");
         out.println(LocalDateTime.now().toString());
         out.flush();
+
+        String userName = request.getParameter("firstname");
+        String password = request.getParameter("password");
+
+        if (userName!=null && userName.matches("tejala")) {
+            if (password!=null && password.matches("tejala")){
+                out.println();
+                out.printf("Welcome %s", userName);
+                out.println();
+                out.printf("Product name: %s", appName);
+            } else {
+                out.printf("Bad Login");
+            }
+        } else {
+            out.printf("Bad Login");
+        }
     }
 }
