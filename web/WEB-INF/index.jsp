@@ -20,11 +20,11 @@
     <input type="submit" value="Submit">
 </form>
 
-<% String user = (String) request.getAttribute("user");
-    if(user == null) {
-        user = "Tej";
-    }
-%>
-<h2> Welcome <%= user%></h2>
+<%--<% String user = (String) request.getAttribute("user");--%>
+    <%--if(user == null) {--%>
+        <%--user = "Tej";--%>
+    <%--}--%>
+<%--%>--%>
+<%--<h2> Welcome <%= user%></h2>--%>
 </body>
 </html>

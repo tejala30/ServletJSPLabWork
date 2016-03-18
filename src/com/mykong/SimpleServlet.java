@@ -28,7 +28,7 @@ public class SimpleServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        out.println("<h1>hi!</h1>");
+        out.print("<h1>Hello World! The time is</h1>");
         out.println(LocalDateTime.now().toString());
         out.flush();
 
@@ -42,7 +42,8 @@ public class SimpleServlet extends HttpServlet {
                 out.println();
                 out.printf("Product name: %s", appName);
             } else {
-                out.printf("Bad Login");
+//                out.printf("Bad Login");
+                throw new ServletException("A name should be entered");
             }
         } else {
             out.printf("Bad Login");
