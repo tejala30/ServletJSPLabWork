@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.mykong.User" %><%--
   Created by IntelliJ IDEA.
   User: tethippe
   Date: 3/16/2016
@@ -19,5 +19,12 @@
     <input type="password" name="password">
     <input type="submit" value="Submit">
 </form>
+
+<% String user = (String) request.getAttribute("user");
+    if(user == null) {
+        user = "Tej";
+    }
+%>
+<h2> Welcome <%= user%></h2>
 </body>
 </html>
