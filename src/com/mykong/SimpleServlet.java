@@ -21,16 +21,15 @@ public class SimpleServlet extends HttpServlet {
         appName = getInitParameter("ProductName");
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         out.print("<h1>Hello World! The time is</h1>");
         out.println(LocalDateTime.now().toString());
-        out.flush();
 
         String userName = request.getParameter("firstname");
         String password = request.getParameter("password");
@@ -38,7 +37,11 @@ public class SimpleServlet extends HttpServlet {
         if (userName!=null && userName.matches("tejala")) {
             if (password!=null && password.matches("tejala")){
                 out.println();
+                out.println();
+                out.println();
                 out.printf("Welcome %s", userName);
+                out.println();
+                out.println();
                 out.println();
                 out.printf("Product name: %s", appName);
             } else {
@@ -47,6 +50,7 @@ public class SimpleServlet extends HttpServlet {
             }
         } else {
             out.printf("Bad Login");
+//            response.sendRedirect("/WEB-INF/index.jsp");
         }
     }
 }

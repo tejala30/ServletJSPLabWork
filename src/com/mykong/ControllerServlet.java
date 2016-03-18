@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Calendar;
 
 /**
  * Created by tethippe on 3/17/2016.
@@ -17,15 +18,25 @@ public class ControllerServlet extends HttpServlet {
 
     }
 
+    @Override
+    public void init() throws ServletException {
+        ApplicationSettings applicationSettings = new ApplicationSettings();
+        applicationSettings.setFormCssClass("blueUser");
+        getServletContext().setAttribute("app", applicationSettings);
+    }
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = new User();
-        user.setName("Tejala");
-        user.setEmail("tejala@gmail.com");
+        user.setName("Master");
+        user.setEmail("master@gmail.com");
 
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
+        String[] strDays = new String[] { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+        Calendar now = Calendar.getInstance();
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/index.jsp");
 //        getServletContext().setAttribute();
 //        request.getSession().setAttribute();
-        request.setAttribute("user", "Hello World");
+        request.setAttribute("user", user);
+        request.setAttribute("dayOfWeek", strDays[now.get(Calendar.DAY_OF_WEEK) - 1]);
         dispatcher.forward(request, response);
 
     }

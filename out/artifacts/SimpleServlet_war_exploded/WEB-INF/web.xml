@@ -12,6 +12,10 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>ControllerServlet</servlet-name>
+        <servlet-class>com.mykong.ControllerServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SimpleServlet</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -23,7 +27,16 @@
 
     <servlet-mapping>
         <servlet-name>ControllerServlet</servlet-name>
-        <url-pattern>/foo</url-pattern>
+        <url-pattern>/main</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>EntityServlet</servlet-name>
+        <servlet-class>com.mykong.SimpleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EntityServlet</servlet-name>
+        <url-pattern>/entity</url-pattern>
     </servlet-mapping>
     <error-page>
         <location>/WEB-INF/errorpage.jsp</location>
